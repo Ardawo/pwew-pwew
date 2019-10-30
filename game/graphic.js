@@ -33,9 +33,14 @@ function init()
     scene.add(ennemy1.graphic);
     console.log(ennemy1);
 
+    ennemy2 = new Player("ennemy2", 0x00ff00, new THREE.Vector2(Math.random()*(WIDTH/2 - WIDTH/2*-1)+WIDTH/2*-1, Math.random()*(HEIGHT/2 - HEIGHT/2*-1)+HEIGHT/2*-1), 0);
+    scene.add(ennemy2.graphic);
+    console.log(ennemy2);
+
     light1 = new Light("sun", 0xffffff, "0,0,340");
     scene.add(light1);
     console.log(scene);
+    ennemiesList = [ennemy1, ennemy2];
 }
 
 function Ground(color, size_x, size_y, nb_tile)

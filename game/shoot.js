@@ -57,15 +57,17 @@ function bullet_collision()
       console.log("bullet_collision");
       console.log(player1.bullets[i].position);
       console.log(ennemy1.position);
-        if (Math.abs(player1.bullets[i].position.x - ennemy1.position.x) < 10 &&
-            Math.abs(player1.bullets[i].position.y - ennemy1.position.y) < 10)
+      for (j = 0; j < ennemiesList.length; j++) {
+        var ennemyItem = ennemiesList[j];
+        if (Math.abs(player1.bullets[i].position.x - ennemyItem.graphic.position.x) < 10 &&
+            Math.abs(player1.bullets[i].position.y - ennemyItem.graphic.position.y) < 10)
         {
-            alert("erer")
             scene.remove(player1.bullets[i]);
-            ennemy1.dead();
+            scene.remove(ennemyItem.graphic);
             player1.bullets.splice(i, 1);
             i--;
         }
+      }
     }
 }
 
@@ -83,7 +85,25 @@ function player_collision()
         player1.graphic.position.y -= y - HEIGHT;
     if ( x < 0 )
         player1.graphic.position.x -= x;
-
+    if (Math.abs( - ennemy1.position.x) < 10 &&
+        Math.abs(player1.bullets[i].position.y - ennemy1.position.y) < 10)
+    {
+        scene.remove(player1.bullets[i]);
+        scene.remove(ennemy1.graphic);
+        player1.bullets.splice(i, 1);
+        i--;
+    }
+    for (j = 0; j < ennemiesList.length; j++) {
+      var ennemyItem = ennemiesList[j];
+      if (Math.abs(player1.graphic.position.x - ennemyItem.graphic.position.x) < 10 &&
+          Math.abs(player1.graphic.position.y - ennemyItem.graphic.position.y) < 10)
+      {
+        alert("here")
+          player1.life = player1.life - 1;
+          if (player1.life <= 0)
+            player1.dead();
+      }
+    }
 }
 
 function player_falling()

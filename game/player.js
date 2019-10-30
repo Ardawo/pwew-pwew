@@ -6,6 +6,7 @@ var Player = function(name, color, position, direction) {
     this.bullets = new Array();
     this.direction = direction;
     this.speed = 0;
+    this.left = false;
 
     this.material = new THREE.MeshLambertMaterial({
         color: color,
@@ -84,5 +85,7 @@ Player.prototype.move = function () {
 
     light1.position.x = this.graphic.position.x;
     light1.position.y = this.graphic.position.y;
+    this.position.x = this.graphic.position.x;
+    this.position.y = this.graphic.position.y;
    // light1.position.z = this.graphic.position.z + 500;
 };
