@@ -129,6 +129,8 @@ function player_falling()
             && (y > tileY)
             && (y < mtileY))
         {
+          player1.life = player1.life - 1;
+          if (player1.life <= 0)
             player1.dead();
         }
     }
